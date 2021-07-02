@@ -348,13 +348,20 @@ class URL implements Serializable {
         return returnURL(newURLAddress);
     }
 
-    public String getAuthority() {
+    public String getUserInfo() {
         if (StringUtils.isEmpty(getUsername())
                 && StringUtils.isEmpty(getPassword())) {
             return null;
         }
-        return (getUsername() == null ? "" : getUsername())
-                + ":" + (getPassword() == null ? "" : getPassword());
+        return getUsername() + ":" + getPassword();
+    }
+
+    public String getAuthority() {
+        if (StringUtils.isEmpty(getUserInfo())
+                && StringUtils.isEmpty(getHost())) {
+            return null;
+        }
+        return getUserInfo() + "@" + getHost() + ":" + getPort();
     }
 
     public String getHost() {

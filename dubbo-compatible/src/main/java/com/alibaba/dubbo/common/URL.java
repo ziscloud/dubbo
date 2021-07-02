@@ -115,8 +115,8 @@ public class URL extends org.apache.dubbo.common.URL {
     }
 
     @Override
-    public String getAuthority() {
-        return super.getAuthority();
+    public String getUserInfo() {
+        return super.getUserInfo();
     }
 
     @Override
